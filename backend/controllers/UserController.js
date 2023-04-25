@@ -1,15 +1,15 @@
-const User = require("../models/User");
+const User = require('../models/User');
 
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const { default: mongoose } = require("mongoose");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { default: mongoose } = require('mongoose');
 
 const jwtSecret = process.env.JWT_SECRET;
 
 // Generate user token
 const generateToken = (id) => {
   return jwt.sign({ id }, jwtSecret, {
-    expiresIn: "7d",
+    expiresIn: '7d',
   });
 };
 
@@ -21,7 +21,7 @@ const register = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user) {
-    res.status(422).json({ errors: ["Por favor, utilize outro e-mail."] });
+    res.status(422).json({ errors: ['Por favor, utilize outro e-mail.'] });
     return;
   }
 
@@ -39,7 +39,7 @@ const register = async (req, res) => {
   // If user was created sucessfully, return the token
   if (!newUser) {
     res.status(422).json({
-      errors: ["Houve um erro, por favor tente novamente mais tarde."],
+      errors: ['Houve um erro, por favor tente novamente mais tarde.'],
     });
     return;
   }
@@ -65,13 +65,13 @@ const login = async (req, res) => {
 
   // Check if user exists
   if (!user) {
-    res.status(404).json({ errors: ["Usuário não encontrado!"] });
+    res.status(404).json({ errors: ['Usuário não encontrado!'] });
     return;
   }
 
   // Check if password matches
   if (!(await bcrypt.compare(password, user.password))) {
-    res.status(422).json({ errors: ["Senha inválida!"] });
+    res.status(422).json({ errors: ['Senha inválida!'] });
     return;
   }
 
@@ -96,7 +96,7 @@ const update = async (req, res) => {
   const reqUser = req.user;
 
   const user = await User.findById(mongoose.Types.ObjectId(reqUser._id)).select(
-    "-password"
+    '-password'
   );
 
   if (name) {
@@ -126,13 +126,14 @@ const update = async (req, res) => {
 const getUserById = async (req, res) => {
   const { id } = req.params;
 
+  // encotra  o usuário pelo id
   const user = await User.findById(mongoose.Types.ObjectId(id)).select(
-    "-password"
+    '-password'
   );
 
   // Check if user exists
   if (!user) {
-    res.status(404).json({ errors: ["Usuário não encontrado!"] });
+    res.status(404).json({ errors: ['Usuário não encontrado!'] });
     return;
   }
 
