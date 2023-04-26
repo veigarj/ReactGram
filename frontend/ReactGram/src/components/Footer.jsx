@@ -2,8 +2,10 @@ import styles from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <footer className={styles.footer}>
+      <p>ReactGram &copy; 2022</p>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
