@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 // Controller
@@ -12,44 +12,48 @@ const {
   likePhoto,
   commentPhoto,
   searchPhotos,
-} = require("../controllers/PhotoController");
+} = require('../controllers/PhotoController');
 
 // Middlewares
-const authGuard = require("../middlewares/authGuard");
-const validate = require("../middlewares/handleValidations");
+//autenticação
+const authGuard = require('../middlewares/authGuard');
+// tras os Erros
+const validate = require('../middlewares/handleValidations');
+// validação de campos
 const {
   photoInsertValidation,
   photoUpdateValidation,
   commentValidation,
-} = require("../middlewares/photoValidations");
-const { imageUpload } = require("../middlewares/imageUpload");
+} = require('../middlewares/photoValidations');
+// upload de imagens
+const { imageUpload } = require('../middlewares/imageUpload');
 
 // Routes
 router.post(
-  "/",
+  '/',
   authGuard,
-  imageUpload.single("image"),
+  imageUpload.single('image'),
   photoInsertValidation(),
   validate,
   insertPhoto
 );
-router.delete("/:id", authGuard, deletePhoto);
-router.get("/", getAllPhotos);
-router.get("/user/:id", getUserPhotos);
-router.get("/search", searchPhotos);
+router.delete('/:id', authGuard, deletePhoto);
+router.get('/', getAllPhotos);
+router.get('/user/:id', getUserPhotos);
+router.get('/search', searchPhotos);
 
-router.get("/:id", getPhotoById);
+router.get('/:id', getPhotoById);
 router.put(
-  "/:id",
+  '/:id',
   authGuard,
-  imageUpload.single("image"),
+  imageUpload.single('image'),
   photoUpdateValidation(),
   validate,
   updatePhoto
 );
-router.put("/like/:id", authGuard, likePhoto);
+router.put('/like/:id', authGuard, likePhoto);
 router.put(
-  "/comment/:id",
+  '/comment/:id',
   authGuard,
   commentValidation(),
   validate,
