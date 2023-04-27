@@ -15,11 +15,11 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   return (
-       <nav id="nav">
+       <nav className={styles.nav}>
       <Link to="/">
         <h2>ReactGram</h2>
       </Link>
-      <form id="search-form">
+      <form className={styles.search_form}>
         <BsSearch />
         <input
           type="text"
