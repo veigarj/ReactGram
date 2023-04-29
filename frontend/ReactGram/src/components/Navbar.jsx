@@ -27,11 +27,17 @@ const Navbar = () => {
         />
       </form>
       <ul className={styles.nav_links}>
+        <li>
       <Link to="/">
         <BsHouseDoorFill />
       </Link>
+        </li>
+        <li>
       <NavLink to="/login">Entrar</NavLink>
+        </li>
+        <li>
       <NavLink to="/register">Cadastrar</NavLink>
+        </li>
       
       </ul>
 
