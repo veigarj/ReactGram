@@ -6,9 +6,12 @@ const register = async (data) => {
 
   try {
     const res = await fetch(api + '/users/register', config)
+      // recebe dados e coverte para json
       .then((res) => res.json())
+      // se der erro retorna o erro
       .catch((err) => err);
 
+    // se o res for true, salva o user no localstorage,
     if (res) {
       localStorage.setItem('user', JSON.stringify(res));
     }
