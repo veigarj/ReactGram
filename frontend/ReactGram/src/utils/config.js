@@ -10,20 +10,20 @@ export const requestConfig = (method, data, token = null, image = null) => {
   // se vem imagem vem os dados como (form data)
   if (image) {
     config = {
-      method,
+      method: method,
       body: data,
       headers: {},
     };
     // se o method vem DELETE ou nao vem dados
   } else if (method === 'DELETE' || data === null) {
     config = {
-      method,
+      method: method,
       headers: {},
     };
     // quando vem dados - vem os dados como json
   } else {
     config = {
-      method,
+      method: method,
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
