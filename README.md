@@ -1,7 +1,7 @@
 # ReactGram
 
 Aplicação backend em Node.js/Express para gerenciar autenticação de usuários, upload de arquivos e endpoints de API. Construída com ferramentas e bibliotecas modernas para desenvolvimento seguro, escalável e eficiente.
-Front-end em React.
+Front-end em React que utiliza Redux para gerenciamento de estado, React Router para navegação e ícones do React Icons para uma interface visualmente rica.
 
 ## Índice
 - [Funcionalidades](#funcionalidades)
@@ -33,6 +33,12 @@ Front-end em React.
 - **multer**: Middleware para upload de arquivos
 - **cors**: Habilita Cross-Origin Resource Sharing
 - **dotenv**: Carrega variáveis de ambiente de um arquivo `.env`
+- **reduxjs**: Simplifica o gerenciamento de estado com Redux.
+- **react**: Biblioteca para construção de interfaces de usuário.
+- **react-dom**: Manipulação do DOM com React.
+- **react-icons**: Conjunto de ícones para componentes React.
+- **react-redux**: Integração do Redux com React.
+- **react-router-dom**: Gerenciamento de rotas na aplicação.
 
 ## Instalação
 1. Clone o repositório:
